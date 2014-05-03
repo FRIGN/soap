@@ -1,6 +1,6 @@
 # flags
 CFLAGS = -std=c99 -pedantic -Wall -Os ${INCS}
-LDFLAGS = -static -s
+LDFLAGS = -s
 
 # compiler and linker
 CC = cc
