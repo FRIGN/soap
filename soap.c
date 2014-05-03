@@ -16,7 +16,7 @@ main(int argc, char *argv[]){
 	char cmd[BUFSIZ], sharg[BUFSIZ];
 	regex_t regex;
 
-	/* we only take on argument */
+	/* we only take one argument */
 	if (argc != 2)
 		return EXIT_FAILURE;
 
@@ -40,7 +40,7 @@ main(int argc, char *argv[]){
 	/* check regex and launch action if it matches argv[1] */
 	for (i=0; i < sizeof(pairs)/sizeof(*pairs); ++i) {
 		if (regcomp(&regex, pairs[i].regex, REG_EXTENDED))
-			fprintf(stderr, "Invalid regex: %s\n", pairs[i].regex);
+			fprintf(stderr, "invalid regex: %s\n", pairs[i].regex);
 		if (!regexec(&regex, argv[1], 0, NULL, 0)) {
 			snprintf(cmd, sizeof cmd, pairs[i].action, sharg);
 			system(cmd);
